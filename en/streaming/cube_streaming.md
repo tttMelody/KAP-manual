@@ -1,6 +1,6 @@
-## KAP Building Cube from Streaming (Kafka)
+##  Streaming Cube
 
-KAP 2.3 releases the scalable streaming cubing function, it leverages Hadoop to consume the data from Kafka to build the cube. This doc is a step by step tutorial, illustrating how to create and build a sample cube.
+KAP 2.3.x releases the scalable streaming cubing function, it leverages Hadoop to consume the data from Kafka to build the cube. This doc is a step by step tutorial, illustrating how to create and build a sample cube.
 
 ## Preparation
 To finish this tutorial, you need a Hadoop environment which has KAP 2.3 installed, and have Kafka be ready to use. In this tutorial, we use Hortonworks HDP 2.4 Sandbox VM as the Hadoop environment.
@@ -32,21 +32,21 @@ This tool sends 100 records to Kafka per second. Please keep it running during t
 ## Define a table from streaming
 1. Start KAP server, login KAP web GUI, select or create a project. Click "Model" -> "Data Source", then click the icon "Add Streaming Table".
 
-   ![](pictures/a.png)
+   ![](images/a.png)
 
 2.Input your broker info and save it, like:
-   ![](pictures/b.png)
+   ![](images/b.png)
 
 
 3.Click sandbox->kylindemo, the kafka sample message would appear in the right box:
-   ![](pictures/c.png)
+   ![](images/c.png)
 
 4.You need to give a logic table name for this streaming data source. The name will be used for SQL query later. Here please enter "KAFKA_TABLE_1" in the "Table Name" field.
-   ![](pictures/d.png)
+   ![](images/d.png)
 
 5.Review the table schema and submit it!
 
-   ![](pictures/e.png)
+   ![](images/e.png)
 
 
 ## Create data model
@@ -56,12 +56,12 @@ With the table defined in previous step, let's create the data model. This step 
 * Select "MINUTE_START" as the cube's partition date column, as we will do incremental building at minute level.
 
 Here we pick 8 dimension columns and 2 measure columns:
- 
-![](pictures/5_Data_model_dimension.png)
+
+![](images/5_Data_model_dimension.png)
  	
-![](pictures/6_Data_model_measure.png)
+![](images/6_Data_model_measure.png)
  	
-	
+​	
 Save the data model.
 
 
@@ -73,13 +73,13 @@ The streaming cube is almost the same as a normal cube. A couple of points need 
 * In the "refersh setting" step, you should create more merge ranges, like 0.5 hour, 4 hours, 1 day, and 7 days. This helps control the cube segment amount.
 * In the "rowkeys" section, drag the "minute\_start" to the head position. For streaming queries, the time condition is used frequently. So putting it to the head will help narrow down the scan range.
 
-	![](pictures/8_Cube_dimension.png)
-	
-	![](pictures/9_Cube_measure.png)
-		
-	![](pictures/10_agg_group.png)
+ ![](images/8_Cube_dimension.png)
 
-	![](pictures/11_Rowkey.png)
+ ![](images/9_Cube_measure.png)
+ ​	
+ ![](images/10_agg_group.png)
+
+ ![](images/11_Rowkey.png)
 
 Save the cube.
 
@@ -138,16 +138,16 @@ The reason is KAP wasn’t able to find the proper Kafka client jars. Make sure 
 Within a Sandbox VM, YARN may not allocate the requested memory resource to MR job, as the “inmem” cubing algorithm requests more memory resource. You can bypass this by requesting less memory: edit “conf/kylin_job_conf_inmem.xml”, change the following two parameters like this:
 
 	<property>
-        <name>mapreduce.map.memory.mb</name>
-        <value>1072</value>
-        <description></description>
-    </property>
-
-    <property>
-        <name>mapreduce.map.java.opts</name>
-        <value>-Xmx800m</value>
-        <description></description>
-    </property>
+	    <name>mapreduce.map.memory.mb</name>
+	    <value>1072</value>
+	    <description></description>
+	</property>
+	
+	<property>
+	    <name>mapreduce.map.java.opts</name>
+	    <value>-Xmx800m</value>
+	    <description></description>
+	</property>
 
 If there already have bunch of history messages in Kafka and you'd better not to build from the very beginning, you can trigger a call to set the current end position as the start for the cube:
 
