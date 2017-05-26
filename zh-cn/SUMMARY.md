@@ -36,7 +36,7 @@
     * [KAP 2.1 生产环境推荐配置](config/recommend_settings_v2_1.cn.md)
     * [KAP 2.2 生产环境推荐配置](config/recommend_settings_v2_2.cn.md)
     * [启用任务引擎HA](config/jobengine_ha.cn.md)
-    * [Cube配置重定义](config/cube_override.cn.md)
+    * [项目和Cube配置重写](config/config_override.cn.md)
 * [基本多维分析](molap/README.md)
     * [样例数据集](molap/dataset.cn.md)
     * [数据导入](molap/import.cn.md)
