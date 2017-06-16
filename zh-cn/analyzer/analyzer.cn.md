@@ -16,9 +16,9 @@ KyAnalyzer无缝集成KAP（Kylin），让用户以最简单快捷的方式访�
 在kyanalyzer-server/conf目录下有个配置文件kyanalyzer.properties， 需要在该文件中配置好KAP的IP及端口信息，*kap.host*为KAP的IP，默认为localhost，*kap.port*为KAP REST API的端口，默认7070。
 同时，关于mondrian的所有配置可以参考conf/mondrian.properties.template 配置到mondrian.properties中。（注：在kap2.2之后，我们将kap.host及kap.port配置移到kyanalyzer.properties中，同时在conf下引入了mondrian.properties）
 
-通过server 目录下的 start-analyzer.sh启动KyAnalyzer，默认端口为8080,可通过 http://{hostname}:8080 访问页面。如果要停掉应用执行stop-analyzer.sh即可。
+通过server 目录下的 start-analyzer.sh启动KyAnalyzer，默认端口为8080，可通过 `http://{hostname}:8080` 访问页面。如果要停掉应用执行stop-analyzer.sh即可。
 如果在启动过程中遇到问题页面打不开，可以到tomcat/logs目录下查看具体出错信息。
-启动时通过tomcat/logs/catalina.out可以监控到启动时是否有错，如果端口冲突，请修改tomcat/conf/server.xml, 找到对应的关键字port="8080"，将端口改为可用的端口即可。
+启动时通过tomcat/logs/catalina.out可以监控到启动时是否有错，如果端口冲突，请修改tomcat/conf/server.xml，找到对应的关键字port="8080"，将端口改为可用的端口即可。
 
 根目录下文件信息
 

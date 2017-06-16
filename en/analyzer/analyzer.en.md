@@ -14,7 +14,7 @@ Uncompress KyAnalyzer package, copy mondrian-kylin-{version}.jar into server/tom
 
 Edit kyanalyzer.properties under kyanalyzer-server/conf，set KAP host and KAP port, *kap.host* represents KAP IP(default value localhost), and *kap.port* represents KAP app port(default value 7070). And you can edit mondrian.properties refer to conf/mondrian.properties.template.（Note: we have moved 'kap.host' and 'kap.port' to kyanalyzer.properties since kap2.2, and also add mondrian.properties to kyanalyzer-server/conf/）
 
-Run start-analyzer.sh under server to start KyAnalyzer, the default port is 8080. When the server is started, please visit http://{hostname}:8080. If you want to stop the server, please run stop-analyzer.sh.
+Run start-analyzer.sh under server to start KyAnalyzer, the default port is 8080. When the server is started, please visit `http://{hostname}:8080`. If you want to stop the server, please run stop-analyzer.sh.
 
  If the server is not started normally, please check the logs under tomcat/logs for details. Make sure there's no port conflict, you can check it in tomcat/logs/catalina.out, and update to new port in tomcat/conf/server.xml.
 
