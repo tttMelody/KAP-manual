@@ -8,4 +8,4 @@
 
 [CDH Sandbox快速上手](quickstart_cdh.cn.md)
 
-[Azure体验版快速上手](quickstart_azure.cn.md)
+[Azure体验版快速上手](quickstart_azure_hdi.cn.md)
