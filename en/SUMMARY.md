@@ -43,6 +43,7 @@
     * [Cube Design](model/cube/README.md)
         * [Create Cube](model/cube/create_cube.en.md)
         * [Aggregation Group](model/cube/aggregation_group.en.md)
+        * [Cuboid Pruning](model/cube/cuboid_pruning.en.md)
         * [Cube Optimize](model/cube/cube_suggestion.en.md)
         * [Table Index](model/cube/table_index.en.md)
     * [Build Cube](model/build_cube.en.md)
