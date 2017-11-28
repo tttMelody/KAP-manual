@@ -39,9 +39,13 @@ If the model check job is done without any exceptions, it can observe the check 
 
 As mentioned in the beginning, The Model Check includes 3 different check tasks:
 
-1. Check if there are the duplications in primary key of lookup tables. If there are the duplication and it is over the given threshold will terminates the check job immediately. In this case, it's better to remove the duplication.
-2. Check if the source data on the foreigner key is distributed uniformly. When the data is not distributed uniformly, might cause the whole job can not finish until the latest reducer which possesses the skew data completes its task. It suggests to have some efforts to avoid the this situation before starting the cubing job. 
-3. Check if the join condition is reasonable. It will generate a flat table and check the join result. According to the result, it could have basic judgement that if the given join condition is good or bad. If the condition is totally good, there could be some issues in the source data.
+1. **Model status check**: Check if the join condition is reasonable. It will generate a flat table and check the join result. According to the result, it could have basic judgement that if the given join condition is good or bad. If the condition is totally good, there could be some issues in the source data.
+
+2. **Fact table sampling**: Check if the source data on the foreigner key is distributed uniformly. When the data is not distributed uniformly, might cause the whole job can not finish until the latest reducer which possesses the skew data completes its task. It suggests to have some efforts to avoid the this situation before starting the cubing job. 
+
+3. **Lookup table sampling**: Check if there are the duplications in primary key of lookup tables. If there are the duplication and it is over the given threshold will terminates the check job immediately. In this case, it's better to remove the duplication.
+
+   ​
 
 With the above checks, it defines five model check status:
 
