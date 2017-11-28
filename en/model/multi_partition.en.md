@@ -6,7 +6,7 @@ The common model is usually partitioned by time. But in the multi-tenant scenari
 
 - Basic concept: the partition column includes the time partition column and multi-partition column. Regarding multi-partition column, KAP currently supports to add only one partition (Primary Partition).
 - Common Concepts:
-  - Time Partition Column: supports date or finer granularity time partition. The supported data types include time (time/date/datetime) and integer (integer/long/short).
+  - Time Partition Column: supports date or finer granularity time partition. The supported data types include time (time/date/datetime) and integer (integer/tinyint/smallint/bigint/int4/long8).
   - Multi-Partition Column: the partition dimension except for Time Partition Column. Currently, adding one partition (Primary Partition) is supported.
   - Partition value: the specific value in the primary partition column when being built.   The segment is often built incrementally on the partition value. 
 
